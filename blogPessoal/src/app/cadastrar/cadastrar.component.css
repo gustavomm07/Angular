@@ -1,0 +1,8 @@
+#img-bg{
+    background-image: url('https://www.administracao.pr.gov.br/sites/default/arquivos_restritos/files/imagem/2019-07/cadastro_banner_1.png');
+
+    min-height: 695px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
