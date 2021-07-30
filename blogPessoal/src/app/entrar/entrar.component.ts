@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { AuthService } from './../sevice/auth.service';
 import { UserLogin } from './../model/UserLogin';
 import { Component, OnInit } from '@angular/core';
@@ -19,13 +20,30 @@ userLogin : UserLogin = new UserLogin;
   window.scroll(0,0)
   }
 
-  test(){
-    alert(JSON.stringify(this.userLogin))
-  }
+
 
   entrar(){
    this.auth.entrar(this.userLogin).subscribe((resp: UserLogin)=>{
      this.userLogin = resp
+
+    environment.token = this.userLogin.token
+    environment.nome = this.userLogin.nome
+    environment.foto = this.userLogin.foto
+    environment.id = this.userLogin.id
+    
+    console.log(environment.token)
+    console.log(environment.nome)
+    console.log(environment.foto)
+    console.log(environment.id)
+
+
+     this.userLogin.foto
+
+     this.router.navigate(['/inicio'])
+   }, erro => {
+     if(erro.status == 500){
+      alert('Usuário ou senha estão incorretos!')
+     }
    })
   }
 }
